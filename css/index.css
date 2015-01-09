@@ -1,0 +1,125 @@
+/*
+	This is the css for the start page of the sample.
+	
+	There is a container div that reserves a part of the browser window with a fixed
+	width. Within that container are five other divs:
+		- the banner
+		- the introductory text
+		- the login window
+		- an image
+		- the footer.
+		
+	The main one you are concerned with is the one for the login window. When you are
+	integrating the sample in an existing site you will want to copy that part into
+	one of the css files of that site. Do not just link to this css as it resets all
+	the main HTML tags.
+*/
+
+/* login window */
+#divforloginwindow {
+	position:relative;
+	float:left;
+	top:0px;
+	left:0px;
+	width:30%;
+	margin-bottom:5px;
+	margin-left:5px;
+}
+
+/* CSS RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body {
+	overflow:scroll;
+}
+
+#container {
+	background-color:#FFF;
+	position:relative;
+	width:930px;
+	top:0px;
+	left:50%;
+	margin-left:-465px;
+	float:left;	
+}
+
+#banner {
+	position:relative;
+	top:0px;
+	width:100%;
+	height:100px;
+	background-image:url(../images/banner930x100.jpg);
+	margin-bottom:15px;
+}
+
+#divforintroduction {
+	position:relative;
+	float:left;
+	top:0px;
+	left:0px;
+	width:65%;
+	height:auto;
+	margin-bottom:30px;
+	padding-right:30px;
+}
+
+#divforintroduction p{
+	text-indent:5px;
+	padding-left:15px;
+	margin-top:5px;
+}
+
+#divforintroduction h2{
+	font-size:1.2em;
+	text-indent:15px;
+	padding-left:15px;
+	margin-top:15px;
+}	
+
+#divforimage{
+	position:relative;
+	float:right;
+	top:0px;
+	left:0px;
+	width:30%;
+	height:auto;
+}
+
+#footer{
+	position:relative;
+	float:left;
+	width:100%;
+	margin-top:15px;
+	height:50px;
+	background-color:#eee;
+	text-align:center;
+	bottom:0;
+}
+#footer a{
+	color:#333333;
+	text-decoration:none;
+}
+
+#footer a:hover{
+	color:#333333;
+	text-decoration:underline;
+}

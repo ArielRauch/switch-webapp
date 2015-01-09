@@ -1,0 +1,1369 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions name="Service"
+ targetNamespace="http://tempuri.org/butterfly.xsd/Service.wsdl"
+ xmlns:tns="http://tempuri.org/butterfly.xsd/Service.wsdl"
+ xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+ xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+ xmlns:butterfly="http://tempuri.org/butterfly.xsd"
+ xmlns:SOAP="http://schemas.xmlsoap.org/wsdl/soap/"
+ xmlns:MIME="http://schemas.xmlsoap.org/wsdl/mime/"
+ xmlns:DIME="http://schemas.xmlsoap.org/ws/2002/04/dime/wsdl/"
+ xmlns:WSDL="http://schemas.xmlsoap.org/wsdl/"
+ xmlns="http://schemas.xmlsoap.org/wsdl/">
+
+<types>
+
+ <schema targetNamespace="http://tempuri.org/butterfly.xsd"
+  xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"
+  xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns:butterfly="http://tempuri.org/butterfly.xsd"
+  xmlns="http://www.w3.org/2001/XMLSchema"
+  elementFormDefault="unqualified"
+  attributeFormDefault="unqualified">
+  <import namespace="http://schemas.xmlsoap.org/soap/encoding/" schemaLocation="http://schemas.xmlsoap.org/soap/encoding/"/>
+  <complexType name="Status">
+   <sequence>
+     <element name="mServerName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mStatus" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mFlavourName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mReleaseVersionNumber" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="mReleaseType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mReleaseTypeNumber" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="mUpdateVersionNumber" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="mOperatingSystemName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="EntryPoint">
+   <sequence>
+     <element name="mId" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="mName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mDescription" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="Selection">
+   <sequence>
+     <element name="mName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mDescription" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="UserSelection">
+   <sequence>
+     <element name="mJobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mDescription" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mChoices" type="butterfly:Selection" minOccurs="0" maxOccurs="unbounded"/>
+     <element name="mChoicesMade" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+     <element name="mExclusive" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="mCouldDownload" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="mCouldUpload" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="SubmitEntry">
+   <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="submitPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobOrigin" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="metadataXmlStr" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ReplaceEntry">
+   <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="fileName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ConnectionState">
+   <sequence>
+     <element name="connectionId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="connectionName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="MetadataToFillClass">
+   <sequence>
+     <element name="mtfLabel" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mtfDescription" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mtfDataType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mtfDataFormat" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mtfValueIsRequired" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="mtfRememberLastValue" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="mtfValue" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="MetadataToDisplayClass">
+   <sequence>
+     <element name="mtdLabel" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mtdDescription" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mtdDataType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="mtdValue" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="JobStatus">
+   <sequence>
+     <element name="jobAllowMultipleOutputs" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="jobEnableReportViewing" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="jobAllowReplacingJob" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="jobName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobReportName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="fullUserName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobSize" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="jobSubmitTime" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobWaitingTime" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="connections" type="butterfly:ConnectionState" minOccurs="0" maxOccurs="unbounded"/>
+     <element name="jobMetadata" type="butterfly:MetadataToDisplayClass" minOccurs="0" maxOccurs="unbounded"/>
+     <element name="jobRequiresMetadata" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="jobRequiredMetadata" type="butterfly:MetadataToFillClass" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+  </complexType>
+  <complexType name="JobIdStatus">
+   <sequence>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobInfo" type="butterfly:JobStatus" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+  </complexType>
+  <complexType name="PushJobStatus">
+   <sequence>
+     <element name="jobRequiredMetadata" type="butterfly:MetadataToFillClass" minOccurs="0" maxOccurs="unbounded"/>
+     <element name="metadataXmlStr" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="connectionIds" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
+     <element name="jobName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="SubmitPointData">
+   <sequence>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="displayName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="displayThumbnailBase64" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="metadataXmlStr" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="metadata" type="butterfly:MetadataToFillClass" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+  </complexType>
+  <complexType name="LoggedRecord">
+   <sequence>
+     <element name="recId" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="timeStamp" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="module" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="serverName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="flowName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="message" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="type" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ProgressRecord">
+   <sequence>
+     <element name="fullUserName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="serverName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="flowName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="submitPoint" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="submittedTime" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="state" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="enteredState" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="onHold" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkpoint" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="ConnectionInfo">
+   <sequence>
+     <element name="connId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="connName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="UserJob">
+   <sequence>
+     <element name="jobType" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="pointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="pointName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="isRequiresMetadata" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="isAllowMultipleOutputs" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="pushConnections" type="butterfly:ConnectionInfo" minOccurs="0" maxOccurs="unbounded"/>
+     <element name="isEnableReportViewing" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="reportFileName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="isAllowReplacingJob" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="prefix" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="name" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="fileType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="size" type="xsd:long" minOccurs="1" maxOccurs="1"/>
+     <element name="files" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="pages" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="dimensionHor" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="dimensionVer" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="modified" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="flowName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="holdConnection" type="butterfly:ConnectionInfo" minOccurs="1" maxOccurs="1"/>
+     <element name="onHoldSince" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="userName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="submittedTo" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="initiated" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkpointName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="onAlertSince" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="state" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="inStateSince" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="dispMetadata" type="butterfly:MetadataToDisplayClass" minOccurs="0" maxOccurs="unbounded"/>
+     <element name="fillMetadata" type="butterfly:MetadataToFillClass" minOccurs="0" maxOccurs="unbounded"/>
+     <element name="metadataXmlStr" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="backingItemAccessible" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="additionalDataComplete" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="metadataComplete" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="internalError" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="HeavyInfoID">
+   <sequence>
+     <element name="stamp" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="retrieveThumbnail" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="thumbnailSize" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="retrievePages" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="retrieveDimHor" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+     <element name="retrieveDimVer" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="HeavyInfo">
+   <sequence>
+     <element name="status" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="stamp" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="thumbnailBase64" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="pages" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="dimensionHor" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="dimensionVer" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="AdditionalInfoID">
+   <sequence>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="AdditionalInfo">
+   <sequence>
+     <element name="status" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="fileType" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="size" type="xsd:long" minOccurs="1" maxOccurs="1"/>
+     <element name="files" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="modified" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="MetadataInfoID">
+   <sequence>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+   </sequence>
+  </complexType>
+  <complexType name="MetadataInfo">
+   <sequence>
+     <element name="status" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="dispMetadata" type="butterfly:MetadataToDisplayClass" minOccurs="0" maxOccurs="unbounded"/>
+     <element name="fillMetadata" type="butterfly:MetadataToFillClass" minOccurs="0" maxOccurs="unbounded"/>
+   </sequence>
+  </complexType>
+  <!-- operation request element -->
+  <element name="CheckConnect">
+   <complexType>
+    <sequence>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="CheckConnectResponse">
+   <complexType>
+    <sequence>
+     <element name="param-1" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetCompressClientJobs">
+   <complexType>
+    <sequence>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetCompressClientJobsResponse">
+   <complexType>
+    <sequence>
+     <element name="param-2" type="xsd:boolean" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="CheckUserNameAndPass">
+   <complexType>
+    <sequence>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="CheckUserNameAndPassResponse">
+   <complexType>
+    <sequence>
+     <element name="param-3" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="CloseConnection">
+   <complexType>
+    <sequence>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="CloseConnectionResponse">
+   <complexType>
+    <sequence>
+     <element name="param-4" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetStatus">
+   <complexType>
+    <sequence>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetStatusResponse">
+   <complexType>
+    <sequence>
+     <element name="res" type="butterfly:Status" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="SubmitFile">
+   <complexType>
+    <sequence>
+     <element name="inEntry" type="butterfly:SubmitEntry" minOccurs="1" maxOccurs="1"/>
+     <element name="inSubmitData" type="xsd:base64Binary" minOccurs="1" maxOccurs="1" nillable="true"/>
+     <element name="metadata" type="butterfly:MetadataToFillClass" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="SubmitFileResponse">
+   <complexType>
+    <sequence>
+     <element name="outJobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="ReplaceFile">
+   <complexType>
+    <sequence>
+     <element name="inEntry" type="butterfly:ReplaceEntry" minOccurs="1" maxOccurs="1"/>
+     <element name="inSubmitData" type="xsd:base64Binary" minOccurs="1" maxOccurs="1" nillable="true"/>
+     <element name="jobInfo" type="butterfly:PushJobStatus" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="ReplaceFileResponse">
+   <complexType>
+    <sequence>
+     <element name="isReplaced" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="DownloadFile">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="DownloadFileResponse">
+   <complexType>
+    <sequence>
+     <element name="inSubmitData" type="xsd:base64Binary" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetFlowList">
+   <complexType>
+    <sequence>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetFlowListResponse">
+   <complexType>
+    <sequence>
+     <element name="flowList" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetFlowName">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetFlowNameResponse">
+   <complexType>
+    <sequence>
+     <element name="flowName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetFlowState">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetFlowStateResponse">
+   <complexType>
+    <sequence>
+     <element name="FlowState" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetSubmitPoints">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetSubmitPointsResponse">
+   <complexType>
+    <sequence>
+     <element name="submitPoints" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  
+  <!-- operation request element -->
+  <element name="GetCheckPoints">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetCheckPointsResponse">
+   <complexType>
+    <sequence>
+     <element name="checkPoints" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetSubmitPointName">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="submitPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetSubmitPointNameResponse">
+   <complexType>
+    <sequence>
+     <element name="submitPointData" type="butterfly:SubmitPointData" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetCheckPointName">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetCheckPointNameResponse">
+   <complexType>
+    <sequence>
+     <element name="checkPointName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetCheckpointJobsCount">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetCheckpointJobsCountResponse">
+   <complexType>
+    <sequence>
+     <element name="jobs" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetCheckpointJobs">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetCheckpointJobsResponse">
+   <complexType>
+    <sequence>
+     <element name="jobIds" type="xsd:string" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetCheckpointJobInfo">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetCheckpointJobInfoResponse">
+   <complexType>
+    <sequence>
+     <element name="jobInfo" type="butterfly:JobStatus" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetCheckpointJobsInfo">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetCheckpointJobsInfoResponse">
+   <complexType>
+    <sequence>
+     <element name="jobInfos" type="butterfly:JobIdStatus" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="PushCheckpointJob">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobInfo" type="butterfly:PushJobStatus" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="PushCheckpointJobResponse">
+   <complexType>
+    <sequence>
+     <element name="param-5" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetLogData">
+   <complexType>
+    <sequence>
+     <element name="lastTime" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetLogDataResponse">
+   <complexType>
+    <sequence>
+     <element name="logs" type="butterfly:LoggedRecord" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetProgressData">
+   <complexType>
+    <sequence>
+     <element name="lastHours" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetProgressDataResponse">
+   <complexType>
+    <sequence>
+     <element name="logs" type="butterfly:ProgressRecord" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetJobLockStatus">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetJobLockStatusResponse">
+   <complexType>
+    <sequence>
+     <element name="userName" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="SetJobLockStatus">
+   <complexType>
+    <sequence>
+     <element name="flowId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="checkPointId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="jobId" type="xsd:string" minOccurs="1" maxOccurs="1"/>
+     <element name="lockStatus" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="SetJobLockStatusResponse">
+   <complexType>
+    <sequence>
+     <element name="isSet" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetUserJobs">
+   <complexType>
+    <sequence>
+     <element name="hours" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+     <element name="flags" type="xsd:int" minOccurs="1" maxOccurs="1"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetUserJobsResponse">
+   <complexType>
+    <sequence>
+     <element name="userJobs" type="butterfly:UserJob" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetJobsHeavyInfo">
+   <complexType>
+    <sequence>
+     <element name="jobsId" type="butterfly:HeavyInfoID" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetJobsHeavyInfoResponse">
+   <complexType>
+    <sequence>
+     <element name="jobsInfo" type="butterfly:HeavyInfo" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetJobsAdditionalInfo">
+   <complexType>
+    <sequence>
+     <element name="jobsId" type="butterfly:AdditionalInfoID" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetJobsAdditionalInfoResponse">
+   <complexType>
+    <sequence>
+     <element name="jobsInfo" type="butterfly:AdditionalInfo" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation request element -->
+  <element name="GetJobsMetadataInfo">
+   <complexType>
+    <sequence>
+     <element name="jobsId" type="butterfly:MetadataInfoID" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+  <!-- operation response element -->
+  <element name="GetJobsMetadataInfoResponse">
+   <complexType>
+    <sequence>
+     <element name="jobsInfo" type="butterfly:MetadataInfo" minOccurs="1" maxOccurs="unbounded"/>
+    </sequence>
+   </complexType>
+  </element>
+ </schema>
+
+</types>
+
+<message name="CheckConnectRequest">
+ <part name="parameters" element="butterfly:CheckConnect"/>
+</message>
+
+<message name="CheckConnectResponse">
+ <part name="parameters" element="butterfly:CheckConnectResponse"/>
+</message>
+
+<message name="GetCompressClientJobsRequest">
+ <part name="parameters" element="butterfly:GetCompressClientJobs"/>
+</message>
+
+<message name="GetCompressClientJobsResponse">
+ <part name="parameters" element="butterfly:GetCompressClientJobsResponse"/>
+</message>
+
+<message name="CheckUserNameAndPassRequest">
+ <part name="parameters" element="butterfly:CheckUserNameAndPass"/>
+</message>
+
+<message name="CheckUserNameAndPassResponse">
+ <part name="parameters" element="butterfly:CheckUserNameAndPassResponse"/>
+</message>
+
+<message name="CloseConnectionRequest">
+ <part name="parameters" element="butterfly:CloseConnection"/>
+</message>
+
+<message name="CloseConnectionResponse">
+ <part name="parameters" element="butterfly:CloseConnectionResponse"/>
+</message>
+
+<message name="GetStatusRequest">
+ <part name="parameters" element="butterfly:GetStatus"/>
+</message>
+
+<message name="GetStatusResponse">
+ <part name="parameters" element="butterfly:GetStatusResponse"/>
+</message>
+
+<message name="SubmitFileRequest">
+ <part name="parameters" element="butterfly:SubmitFile"/>
+</message>
+
+<message name="SubmitFileResponse">
+ <part name="parameters" element="butterfly:SubmitFileResponse"/>
+</message>
+
+<message name="ReplaceFileRequest">
+ <part name="parameters" element="butterfly:ReplaceFile"/>
+</message>
+
+<message name="ReplaceFileResponse">
+ <part name="parameters" element="butterfly:ReplaceFileResponse"/>
+</message>
+
+<message name="DownloadFileRequest">
+ <part name="parameters" element="butterfly:DownloadFile"/>
+</message>
+
+<message name="DownloadFileResponse">
+ <part name="parameters" element="butterfly:DownloadFileResponse"/>
+</message>
+
+<message name="GetFlowListRequest">
+ <part name="parameters" element="butterfly:GetFlowList"/>
+</message>
+
+<message name="GetFlowListResponse">
+ <part name="parameters" element="butterfly:GetFlowListResponse"/>
+</message>
+
+<message name="GetFlowNameRequest">
+ <part name="parameters" element="butterfly:GetFlowName"/>
+</message>
+
+<message name="GetFlowNameResponse">
+ <part name="parameters" element="butterfly:GetFlowNameResponse"/>
+</message>
+
+<message name="GetFlowStateRequest">
+ <part name="parameters" element="butterfly:GetFlowState"/>
+</message>
+
+<message name="GetFlowStateResponse">
+ <part name="parameters" element="butterfly:GetFlowStateResponse"/>
+</message>
+
+<message name="GetSubmitPointsRequest">
+ <part name="parameters" element="butterfly:GetSubmitPoints"/>
+</message>
+
+<message name="GetSubmitPointsResponse">
+ <part name="parameters" element="butterfly:GetSubmitPointsResponse"/>
+</message>
+
+<message name="GetCheckPointsRequest">
+ <part name="parameters" element="butterfly:GetCheckPoints"/>
+</message>
+
+<message name="GetCheckPointsResponse">
+ <part name="parameters" element="butterfly:GetCheckPointsResponse"/>
+</message>
+
+<message name="GetSubmitPointNameRequest">
+ <part name="parameters" element="butterfly:GetSubmitPointName"/>
+</message>
+
+<message name="GetSubmitPointNameResponse">
+ <part name="parameters" element="butterfly:GetSubmitPointNameResponse"/>
+</message>
+
+<message name="GetCheckPointNameRequest">
+ <part name="parameters" element="butterfly:GetCheckPointName"/>
+</message>
+
+<message name="GetCheckPointNameResponse">
+ <part name="parameters" element="butterfly:GetCheckPointNameResponse"/>
+</message>
+
+<message name="GetCheckpointJobsCountRequest">
+ <part name="parameters" element="butterfly:GetCheckpointJobsCount"/>
+</message>
+
+<message name="GetCheckpointJobsCountResponse">
+ <part name="parameters" element="butterfly:GetCheckpointJobsCountResponse"/>
+</message>
+
+<message name="GetCheckpointJobsRequest">
+ <part name="parameters" element="butterfly:GetCheckpointJobs"/>
+</message>
+
+<message name="GetCheckpointJobsResponse">
+ <part name="parameters" element="butterfly:GetCheckpointJobsResponse"/>
+</message>
+
+<message name="GetCheckpointJobInfoRequest">
+ <part name="parameters" element="butterfly:GetCheckpointJobInfo"/>
+</message>
+
+<message name="GetCheckpointJobInfoResponse">
+ <part name="parameters" element="butterfly:GetCheckpointJobInfoResponse"/>
+</message>
+
+<message name="GetCheckpointJobsInfoRequest">
+ <part name="parameters" element="butterfly:GetCheckpointJobsInfo"/>
+</message>
+
+<message name="GetCheckpointJobsInfoResponse">
+ <part name="parameters" element="butterfly:GetCheckpointJobsInfoResponse"/>
+</message>
+
+<message name="PushCheckpointJobRequest">
+ <part name="parameters" element="butterfly:PushCheckpointJob"/>
+</message>
+
+<message name="PushCheckpointJobResponse">
+ <part name="parameters" element="butterfly:PushCheckpointJobResponse"/>
+</message>
+
+<message name="GetLogDataRequest">
+ <part name="parameters" element="butterfly:GetLogData"/>
+</message>
+
+<message name="GetLogDataResponse">
+ <part name="parameters" element="butterfly:GetLogDataResponse"/>
+</message>
+
+<message name="GetProgressDataRequest">
+ <part name="parameters" element="butterfly:GetProgressData"/>
+</message>
+
+<message name="GetProgressDataResponse">
+ <part name="parameters" element="butterfly:GetProgressDataResponse"/>
+</message>
+
+<message name="GetJobLockStatusRequest">
+ <part name="parameters" element="butterfly:GetJobLockStatus"/>
+</message>
+
+<message name="GetJobLockStatusResponse">
+ <part name="parameters" element="butterfly:GetJobLockStatusResponse"/>
+</message>
+
+<message name="SetJobLockStatusRequest">
+ <part name="parameters" element="butterfly:SetJobLockStatus"/>
+</message>
+
+<message name="SetJobLockStatusResponse">
+ <part name="parameters" element="butterfly:SetJobLockStatusResponse"/>
+</message>
+
+<message name="GetUserJobsRequest">
+ <part name="parameters" element="butterfly:GetUserJobs"/>
+</message>
+
+<message name="GetUserJobsResponse">
+ <part name="parameters" element="butterfly:GetUserJobsResponse"/>
+</message>
+
+<message name="GetJobsHeavyInfoRequest">
+ <part name="parameters" element="butterfly:GetJobsHeavyInfo"/>
+</message>
+
+<message name="GetJobsHeavyInfoResponse">
+ <part name="parameters" element="butterfly:GetJobsHeavyInfoResponse"/>
+</message>
+
+<message name="GetJobsAdditionalInfoRequest">
+ <part name="parameters" element="butterfly:GetJobsAdditionalInfo"/>
+</message>
+
+<message name="GetJobsAdditionalInfoResponse">
+ <part name="parameters" element="butterfly:GetJobsAdditionalInfoResponse"/>
+</message>
+
+<message name="GetJobsMetadataInfoRequest">
+ <part name="parameters" element="butterfly:GetJobsMetadataInfo"/>
+</message>
+
+<message name="GetJobsMetadataInfoResponse">
+ <part name="parameters" element="butterfly:GetJobsMetadataInfoResponse"/>
+</message>
+
+<portType name="ServicePortType">
+ <operation name="CheckConnect">
+  <documentation>Service definition of function butterfly__CheckConnect</documentation>
+  <input message="tns:CheckConnectRequest"/>
+  <output message="tns:CheckConnectResponse"/>
+ </operation>
+ <operation name="GetCompressClientJobs">
+  <documentation>Service definition of function butterfly__GetCompressClientJobs</documentation>
+  <input message="tns:GetCompressClientJobsRequest"/>
+  <output message="tns:GetCompressClientJobsResponse"/>
+ </operation>
+ <operation name="CheckUserNameAndPass">
+  <documentation>Service definition of function butterfly__CheckUserNameAndPass</documentation>
+  <input message="tns:CheckUserNameAndPassRequest"/>
+  <output message="tns:CheckUserNameAndPassResponse"/>
+ </operation>
+ <operation name="CloseConnection">
+  <documentation>Service definition of function butterfly__CloseConnection</documentation>
+  <input message="tns:CloseConnectionRequest"/>
+  <output message="tns:CloseConnectionResponse"/>
+ </operation>
+ <operation name="GetStatus">
+  <documentation>Service definition of function butterfly__GetStatus</documentation>
+  <input message="tns:GetStatusRequest"/>
+  <output message="tns:GetStatusResponse"/>
+ </operation>
+ <operation name="SubmitFile10">
+  <documentation>Service definition of function butterfly__SubmitFile10</documentation>
+  <input message="tns:SubmitFileRequest"/>
+  <output message="tns:SubmitFileResponse"/>
+ </operation>
+ <operation name="ReplaceFile">
+  <documentation>Service definition of function butterfly__ReplaceFile</documentation>
+  <input message="tns:ReplaceFileRequest"/>
+  <output message="tns:ReplaceFileResponse"/>
+ </operation>
+ <operation name="DownloadFile">
+  <documentation>Service definition of function butterfly__DownloadFile</documentation>
+  <input message="tns:DownloadFileRequest"/>
+  <output message="tns:DownloadFileResponse"/>
+ </operation>
+ <operation name="GetFlowList">
+  <documentation>Service definition of function butterfly__GetFlowList</documentation>
+  <input message="tns:GetFlowListRequest"/>
+  <output message="tns:GetFlowListResponse"/>
+ </operation>
+ <operation name="GetFlowName">
+  <documentation>Service definition of function butterfly__GetFlowName</documentation>
+  <input message="tns:GetFlowNameRequest"/>
+  <output message="tns:GetFlowNameResponse"/>
+ </operation>
+ <operation name="GetFlowState">
+  <documentation>Service definition of function butterfly__GetFlowState</documentation>
+  <input message="tns:GetFlowStateRequest"/>
+  <output message="tns:GetFlowStateResponse"/>
+ </operation>
+ <operation name="GetSubmitPoints">
+  <documentation>Service definition of function butterfly__GetSubmitPoints</documentation>
+  <input message="tns:GetSubmitPointsRequest"/>
+  <output message="tns:GetSubmitPointsResponse"/>
+ </operation>
+ <operation name="GetCheckPoints">
+  <documentation>Service definition of function butterfly__GetCheckPoints</documentation>
+  <input message="tns:GetCheckPointsRequest"/>
+  <output message="tns:GetCheckPointsResponse"/>
+ </operation>
+ <operation name="GetSubmitPointName">
+  <documentation>Service definition of function butterfly__GetSubmitPointName</documentation>
+  <input message="tns:GetSubmitPointNameRequest"/>
+  <output message="tns:GetSubmitPointNameResponse"/>
+ </operation>
+ <operation name="GetCheckPointName">
+  <documentation>Service definition of function butterfly__GetCheckPointName</documentation>
+  <input message="tns:GetCheckPointNameRequest"/>
+  <output message="tns:GetCheckPointNameResponse"/>
+ </operation>
+ <operation name="GetCheckpointJobsCount">
+  <documentation>Service definition of function butterfly__GetCheckpointJobsCount</documentation>
+  <input message="tns:GetCheckpointJobsCountRequest"/>
+  <output message="tns:GetCheckpointJobsCountResponse"/>
+ </operation>
+ <operation name="GetCheckpointJobs10">
+  <documentation>Service definition of function butterfly__GetCheckpointJobs10</documentation>
+  <input message="tns:GetCheckpointJobsRequest"/>
+  <output message="tns:GetCheckpointJobsResponse"/>
+ </operation>
+ <operation name="GetCheckpointJobInfo">
+  <documentation>Service definition of function butterfly__GetCheckpointJobInfo</documentation>
+  <input message="tns:GetCheckpointJobInfoRequest"/>
+  <output message="tns:GetCheckpointJobInfoResponse"/>
+ </operation>
+ <operation name="GetCheckpointJobsInfo">
+  <documentation>Service definition of function butterfly__GetCheckpointJobsInfo</documentation>
+  <input message="tns:GetCheckpointJobsInfoRequest"/>
+  <output message="tns:GetCheckpointJobsInfoResponse"/>
+ </operation>
+ <operation name="PushCheckpointJob">
+  <documentation>Service definition of function butterfly__PushCheckpointJob</documentation>
+  <input message="tns:PushCheckpointJobRequest"/>
+  <output message="tns:PushCheckpointJobResponse"/>
+ </operation>
+ <operation name="GetLogData10">
+  <documentation>Service definition of function butterfly__GetLogData10</documentation>
+  <input message="tns:GetLogDataRequest"/>
+  <output message="tns:GetLogDataResponse"/>
+ </operation>
+ <operation name="GetProgressData">
+  <documentation>Service definition of function butterfly__GetProgressData</documentation>
+  <input message="tns:GetProgressDataRequest"/>
+  <output message="tns:GetProgressDataResponse"/>
+ </operation>
+ <operation name="GetJobLockStatus">
+  <documentation>Service definition of function butterfly__GetJobLockStatus</documentation>
+  <input message="tns:GetJobLockStatusRequest"/>
+  <output message="tns:GetJobLockStatusResponse"/>
+ </operation>
+ <operation name="SetJobLockStatus">
+  <documentation>Service definition of function butterfly__SetJobLockStatus</documentation>
+  <input message="tns:SetJobLockStatusRequest"/>
+  <output message="tns:SetJobLockStatusResponse"/>
+ </operation>
+ <operation name="GetUserJobs">
+  <documentation>Service definition of function butterfly__GetUserJobs</documentation>
+  <input message="tns:GetUserJobsRequest"/>
+  <output message="tns:GetUserJobsResponse"/>
+ </operation>
+ <operation name="GetJobsHeavyInfo">
+  <documentation>Service definition of function butterfly__GetJobsHeavyInfo</documentation>
+  <input message="tns:GetJobsHeavyInfoRequest"/>
+  <output message="tns:GetJobsHeavyInfoResponse"/>
+ </operation>
+ <operation name="GetJobsAdditionalInfo">
+  <documentation>Service definition of function butterfly__GetJobsAdditionalInfo</documentation>
+  <input message="tns:GetJobsAdditionalInfoRequest"/>
+  <output message="tns:GetJobsAdditionalInfoResponse"/>
+ </operation>
+ <operation name="GetJobsMetadataInfo">
+  <documentation>Service definition of function butterfly__GetJobsMetadataInfo</documentation>
+  <input message="tns:GetJobsMetadataInfoRequest"/>
+  <output message="tns:GetJobsMetadataInfoResponse"/>
+ </operation>
+</portType>
+
+<binding name="Service" type="tns:ServicePortType">
+ <SOAP:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+ <operation name="CheckConnect">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetCompressClientJobs">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="CheckUserNameAndPass">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="CloseConnection">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetStatus">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="SubmitFile10">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="ReplaceFile">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="DownloadFile">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetFlowList">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetFlowName">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetFlowState">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetSubmitPoints">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetCheckPoints">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetSubmitPointName">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetCheckPointName">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetCheckpointJobsCount">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetCheckpointJobs10">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetCheckpointJobInfo">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetCheckpointJobsInfo">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="PushCheckpointJob">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetLogData10">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetProgressData">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetJobLockStatus">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="SetJobLockStatus">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetUserJobs">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetJobsHeavyInfo">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetJobsAdditionalInfo">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+ <operation name="GetJobsMetadataInfo">
+  <SOAP:operation soapAction=""/>
+  <input>
+     <SOAP:body parts="parameters" use="literal"/>
+  </input>
+  <output>
+     <SOAP:body parts="parameters" use="literal"/>
+  </output>
+ </operation>
+</binding>
+
+<service name="Service">
+ <documentation>gSOAP 2.7.12 generated service definition</documentation>
+ <port name="Service" binding="tns:Service">
+  <SOAP:address location="https://127.0.0.1:51008"/>
+  <!-- https://192.168.16.69:51008 -->
+ </port>
+</service>
+
+</definitions>

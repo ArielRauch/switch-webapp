@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" xmlns:ns1="http://tempuri.org/butterfly.xsd">
+    <SOAP-ENV:Body>
+        <ns1:DownloadFile>
+            <flowId>${flowId}</flowId>
+            <checkPointId>${checkPointId}</checkPointId>
+            <jobId>${jobId}</jobId>
+        </ns1:DownloadFile>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

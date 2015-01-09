@@ -1,0 +1,164 @@
+/*
+/* Grid_Layout.css
+/*   contains the grid design and general mark-up
+/*    
+/*   lay-out is :
+/*   container DIV containing ALL other DIV's
+/*        - banner
+/*        - workspace
+/*        - footer
+/*
+/*        container width : 930px
+*/
+
+
+
+/* CSS RESET */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+body{
+overflow-y:scroll;
+}
+
+#container {
+	background-color:#FFF;
+	position:relative;
+	float:left;
+	width:930px;
+	top:0px;
+	left:50%;
+	margin-left:-465px
+}
+
+#banner{
+	position:relative;
+	top:0px;
+	width:100%;
+	height:100px;
+	background-image:url(../images/banner930x100.jpg);
+	margin-bottom:15px;
+}
+
+#divforintroduction {
+	position:relative;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:auto;
+}
+
+#divforintroduction p{
+	text-indent:15px;
+	padding-left:15px;
+	margin-top:5px;
+}
+#divforintroduction h2{
+	font-size:1.2em;
+	text-indent:5px;
+	padding-left:15px;
+	margin-top:15px;
+}
+
+/* menu where the user can choose submit points, checkpoints and messages */
+#usermenu {
+	position:relative;
+	height:60px;
+	width:100%;
+}
+
+/* the list of submit point or checkpoints on the left */
+#submit_or_checkpoint_list {
+	float:left;
+	position:relative;
+	height:auto;
+}
+
+/* the metadata next to the list */
+#submit_or_checkpoint_metadata {
+	float:left;
+	position:relative;
+	min-height:300px;
+}
+
+/* 	the message after a submit or a checkpoint.
+	Here the constants are not used because this is not PHP and therefore the
+	settings are not included and the constants not available.
+*/
+#submit_or_checkpoint_message {
+	position:absolute;
+	top:0px;
+	left:0px;
+	width:100%;
+	height:100%;
+	z-index:100;
+	background-color:white;
+	opacity:0.8;
+}
+
+#message {
+	z-index:101;
+	position:absolute;
+	width:50%;
+	height:auto;
+	border:1px solid #0273b9;
+	top:25%;
+	left:25%;
+	background-color:white;
+	padding:10px;
+	background-image:url(../images/close.gif);
+	background-repeat:no-repeat;
+	background-position:right top;
+}
+
+/* when the message is info or error */
+.info {
+	color:#0273b9;
+	font-size:1.2em;
+}
+
+.error {
+	color:red;
+	font-size:1.2em;
+}
+
+#footer {
+	position:relative;
+	float:left;
+	width:100%;
+	margin-top:15px;
+	height:100px;
+	background-color:#eee;
+	text-align:center;
+	bottom:0px;
+	padding-bottom:10px;
+	padding-top:10px;
+}
+
+#footer a {
+	color:#333333;
+	text-decoration:none;
+}
+
+#footer a:hover {
+	color:#333333;
+	text-decoration:underline;
+}

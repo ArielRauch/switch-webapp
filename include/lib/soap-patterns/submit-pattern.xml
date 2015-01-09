@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <soapenv:Body>
+        <ns1:SubmitFile10 soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns1="http://tempuri.org/butterfly.xsd">
+            <inEntry href="#id0"/>
+            <inSubmitData href="${submitDataId}" xsi:type="xsd:base64Binary"/>
+            ${submit-pattern-arguments-ref}
+        </ns1:SubmitFile10>
+        <multiRef id="id0" soapenc:root="0" soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xsi:type="ns2:SubmitEntry" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:ns2="http://tempuri.org/butterfly.xsd">
+            <flowId xsi:type="xsd:string">${flowId}</flowId>
+            <submitPointId xsi:type="xsd:string">${submitPointId}</submitPointId>
+            <jobName xsi:type="xsd:string">${jobName}</jobName>
+            <jobOrigin xsi:type="xsd:string">${jobOrigin}</jobOrigin>
+            <metadataXmlStr xsi:type="xsd:string"></metadataXmlStr>
+        </multiRef>
+        ${submit-pattern-multi-ref}
+    </soapenv:Body>
+</soapenv:Envelope>

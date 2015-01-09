@@ -1,0 +1,9 @@
+<multiRef id="id${index}" soapenc:root="0" soapenv:encodingStyle="http://schemas.xmlsoap.org/soap/encoding/" xsi:type="ns3:MetadataToFillClass" xmlns:ns3="http://tempuri.org/butterfly.xsd" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/">
+    <mtfLabel xsi:type="xsd:string">${name}</mtfLabel>
+    <mtfDescription xsi:type="xsd:string"></mtfDescription>
+    <mtfDataType xsi:type="xsd:string">string</mtfDataType>
+    <mtfDataFormat xsi:type="xsd:string"></mtfDataFormat>
+    <mtfValueIsRequired href="#id998"/>
+    <mtfRememberLastValue href="#id998"/>
+    <mtfValue xsi:type="xsd:string">${value}</mtfValue>
+</multiRef>
