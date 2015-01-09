@@ -1,0 +1,274 @@
+Skip to main content
+Home
+Cases
+Search
+Content Starts Here
+Case Detail
+
+Case Number	ENF-00015952	Product	Multiple products
+Status	Closed	Version	 
+Created By	Enfocus Support - Carine Bastiaen, 11/4/2014 2:36 PM	Language	English
+Last Modified By	Enfocus Support - Natacha De Kegel, 11/21/2014 4:16 PM	Product Key	 
+Date/Time Closed	11/21/2014 4:16 PM	Platform	 
+Subject	Webservices	Acrobat Version	 
+Description	Hi, 
+I am trying to enable the Dependency approach with the web sample. Unfortunately, the server does not reply with neither Dependency nor DependencyValue in the metadata. 
+
+
+
+
+Please advice, 
+
+
+Ariel 
+
+— 
+Sent from Mailbox
+ 	 	Web Email	ariel@c-copy.co.il
+ 
+Case Comments
+	 
+Comment
+Created By: Enfocus Support - Natacha De Kegel (11/20/2014 4:00 PM)
+Hello, 
+
+Thanks for the update and we will close this ticket. If having any future problems then please send us a new email so that a new ticket can get created.
+Created By: Enfocus Support - Carine Bastiaen (11/20/2014 7:35 AM)
+From: <ariel@c-copy.co.il>
+Hallelujah!!! The lost kids are found and in good condition:)
+
+
+
+
+Will keep you posted about further problems.
+
+
+
+
+Thanks
+
+
+
+
+Ariel
+
+
+—
+Sent from Mailbox
+Created By: Enfocus Support - Natacha De Kegel (11/17/2014 5:41 PM)
+Hello, 
+
+Here is some feedback from development: 
+
+> [metadataXmlStr] => 0 0 0 
+
+Most likely the correct XML string comes in metadataXmlStr, and "0 0 0" is the way the XML is displayed by browser. Can you please click the 'View page source' context menu item in browser and check what is in the HTML code of that page? If there is still no XML inside the HTML could you save the HTML and send it to us? 
+
+One more test to do: 
+
+setup the sources from the attached metadata.zip archive on your web server in the similar way you would install our PHP sample, if needed adjust manually index.php to provide correct IP, port, user name and password to connect to Switch and then open the url "http://127.0.0.1/metadata/" in local browser. You should see the XML content like on the attached screenshot. This screenshot we created using your flow. In our case the XML is displayed. 
+Let us know if you can see the XML. 
+
+Also let us know the exact Switch version you use.
+Created By: Enfocus Support - Natacha De Kegel (11/17/2014 1:28 PM)
+Hello, 
+
+Informed development and waiting on feedback.
+Created By: Enfocus Support - Carine Bastiaen (11/17/2014 11:04 AM)
+From: <ariel@c-copy.co.il>
+[Attachments: DependencyCheck.sflow]
+
+Hi,
+
+in order to remove all doubts about unicode issues I create a simple flow (attached) with short field names with the same result (see below)
+
+
+
+
+Please help us urgently!!!
+
+
+
+
+witchclient\SubmitPointData Object ( [name] => Dependency Check [displayName] => Dependency Check (C-Copy Automation), DependencyCheck [displayThumbnailBase64] => [metadataXmlStr] => 0 0 0 [metadata] => Array ( [0] => switchclient\MetadataToFillClass Object ( [mtfLabel] => a [mtfDescription] => [mtfDataType] => number [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => 0 ) [1] => switchclient\MetadataToFillClass Object ( [mtfLabel] => a1 [mtfDescription] => [mtfDataType] => number [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => 0 ) [2] => switchclient\MetadataToFillClass Object ( [mtfLabel] => a2 [mtfDescription] => [mtfDataType] => number [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => 0 ) [3] => switchclient\MetadataToFillClass Object ( [mtfLabel] => a3 [mtfDescription] => [mtfDataType] => string [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => ) [4] => switchclient\MetadataToFillClass Object ( [mtfLabel] => b [mtfDescription] => [mtfDataType] => string [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => ) [5] => switchclient\MetadataToFillClass Object ( [mtfLabel] => b1 [mtfDescription] => [mtfDataType] => string [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => ) [6] => switchclient\MetadataToFillClass Object ( [mtfLabel] => b2 [mtfDescription] => [mtfDataType] => string [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => ) ) )
+
+
+
+
+
+—
+Sent from Mailbox
+
+On Fri, Nov 14, 2014 at 7:02 PM, Enfocus Maintenance Support
+Created By: Enfocus Support - Natacha De Kegel (11/14/2014 6:02 PM)
+Hello, 
+
+Please also send us your latest flow version so that we can do test locally.
+Created By: Enfocus Support - Natacha De Kegel (11/14/2014 6:01 PM)
+Hello, 
+
+Feedback from development: 
+
+The XML file that represents metadata is serialized into a unicode string representation and included into SOAP packet that itself is the XML that is then serialized into a byte stream using UTF-8 and then sent via HTTP to Client. So on the Client side the incoming byte stream has to be decoded from UTF-8 encoding and then the value of the tag <metadataXmlStr> shall be a unicode string representation of a valid XML. 
+
+For example, if I define a metadata tag with the name "Ḋ" (Ḋ - LATIN CAPITAL LETTER D WITH DOT ABOVE with Unicode code 0x1E0A and UTF-8 representation: e1b8 8a) then the SOAP packet sent by Server over HTTP to Client looks the like the following: 
+
+<?xml version="1.0" encoding="UTF-8"?> 
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/" 
+xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xmlns:xsd="http://www.w3.org/2001/XMLSchema" 
+xmlns:butterfly="http://tempuri.org/butterfly.xsd"><SOAP-ENV:Body><butterfly:GetSubmitPointNameResponse><submitPointData><name>Submit 
+point 1</name><displayName>Submit point 1 (Test Server), New 
+flow</displayName><displayThumbnailBase64></displayThumbnailBase64><metadataXmlStr>&lt;ValueDescription 
+Type="metadatafields"&gt;&#xA; &lt;spMF_1 Format="" LocalizedTagName="Ḋ" 
+Subtype="inline" Tooltip="" Type="string" ReadOnly="No" ValueIsRequired="No" 
+Editor="inline" FormatEditor="inline" DisplayField="Yes" 
+RememberLastValue="No"&gt;&lt;/spMF_1&gt;&#xA;&lt;/ValueDescription&gt;&#xA;</metadataXmlStr><metadata><mtfLabel>Ḋ</mtfLabel><mtfDescription></mtfDescription><mtfDataType>string</mtfDataType><mtfDataFormat></mtfDataFormat><mtfValueIsRequired>false</mtfValueIsRequired><mtfRememberLastValue>false</mtfRememberLastValue><mtfValue></mtfValue></metadata></submitPointData></butterfly:GetSubmitPointNameResponse></SOAP-ENV:Body></SOAP-ENV:Envelope> 
+
+The content of the <metadataXmlStr> is what you would need. The Ḋ is encoded by UTF-8 using bytes e1 b8 8a. Excatly the same byte string should arrive on Client side and appropriately decoded then. 
+
+I suggest that you try the following: 
+1) in Switch flow defines a submit point with single metadata field with only 1 latin character and checks if he gets correct metadataXmlStr on Client side. 
+This should work well because there are other customers who are using SDK and they use this feature 
+2) if above works then replaces the latin character with single Ḋ character and try again 
+3) if above works extends the metadata fields structure till the point it stops working 
+
+Let us know the results of the tests above. We will then decide what the next step would be. 
+
+We will continue our research in the meantime as well.
+Created By: Ariel Rauch (11/14/2014 1:22 PM)
+Fyi - the stars "*" are part of one field so they are not related to the serialization problem
+Created By: Enfocus Support - Natacha De Kegel (11/13/2014 5:14 PM)
+Hello, 
+
+Waiting on feedback from development.
+Created By: Enfocus Support - Carine Bastiaen (11/13/2014 5:12 PM)
+From: Shlomi Koren <shlomi@korent.co.il>
+
+Hello,
+
+Thank you for your reply,
+
+What kind of serialization do you use?
+
+We have tried to decode the string received but no luck.
+
+The string in metadataXmlStr returns with UTF-8 chars and a long string of
+* in the middle.
+
+If the * is the serialized data, although i doubt it, then we are unable to
+de-serialize it and will appreciate a sample code to achieve it.
+
+Best Regards.
+
+בברכה,
+שלומי קורן.
+054-3122499
+
+On Thu, Nov 13, 2014 at 5:15 PM, Enfocus Maintenance Support <
+Created By: Enfocus Support - Natacha De Kegel (11/13/2014 4:15 PM)
+Hello, 
+
+More feedback from development: 
+
+The metadataXmlStr is a serialized xml. This is a Unicode string so to decode it the customer should use the correct codec (UTF-16 or UTF-8). We would like to suggest to define a metadata containing only ASCII characters and checks if this can decode the arrived metadataXmlStr. 
+
+Also note that our PHP sample does not correctly handle Unicode characters in metadataXmlStr. This is the limitation logged here (24768 - Encoding issues in PHP sample in SwitchClient SDK). 
+So you are using our PHP sample as a base for your solution, it may not work. You will have to change it yourself to correctly work with Unicode. 
+
+Do let us know if still having additional questions.
+Created By: Enfocus Support - Natacha De Kegel (11/13/2014 3:18 PM)
+Hello, 
+
+Informed development, waiting on their feedback.
+Created By: Enfocus Support - Carine Bastiaen (11/13/2014 2:27 PM)
+From: Shlomi Koren <shlomi@korent.co.il>
+
+Hello,
+
+We have looked at section '6.3 Switch metadata format' in the
+documentation, and it does not match the metadata we get.
+
+The content of the metadataXmlStr field we get is :
+
+[metadataXmlStr] => בפנים לא 1 חד צדדי CMYK 0 0 0 0 נ"ע 80 גרם כרטיס
+ביקור ללא סיכות אמצע צר*****************************************************
+****************************************************** No No No No No No 50
+
+It does not contain the attributes in the documentation and specificly
+the Dependency and Dependencyvalue attributes.
+
+Please advice on how to get the relevant metadata.
+
+Best Regards.
+
+> ---------- Forwarded message ----------
+Created By: Enfocus Support - Natacha De Kegel (11/13/2014 1:35 PM)
+Hello, 
+
+Here is feedback from development: 
+
+The dependent metadata is the feature appeared in Switch 10 so for compatibility reasons it is available only in the extra field metadataXmlStr. This is the serialized XML representing the metadata in a new format. There Dependency and DependencyValue are defined. The description of this format can be found in '6.3 Switch metadata format' section of Web Services Module Documentation. 
+
+Can you please check that part in the documentation and do not hesitate to contact us if still having any questions.
+Created By: Enfocus Support - Natacha De Kegel (11/12/2014 4:57 PM)
+Hello, 
+
+Informed development, waiting on their feedback.
+Created By: Enfocus Support - Carine Bastiaen (11/12/2014 8:37 AM)
+From: <ariel@c-copy.co.il>
+[Attachments: switch_fields.png]
+
+Hi,
+
+please see below and above the metadata (without the dependency value) and a screenshot with the definition of the files (hebrew — sorry:))
+
+
+
+
+
+stdClass Object ( [flowId] => 7 [spId] => 1 [spData] => switchclient\SubmitPointData Object ( [name] => Order [displayName] => Order [displayThumbnailBase64] => [metadataXmlStr] => בפנים לא 1 חד צדדי CMYK 0 0 0 0 נ"ע 80 גרם כרטיס ביקור ללא סיכות אמצע צר*********************************************************************************************************** No No No No No No 50 [metadata] => Array ( [0] => switchclient\MetadataToFillClass Object ( [mtfLabel] => מס' הזמנה [mtfDescription] => [mtfDataType] => string [mtfDataFormat] => [mtfValueIsRequired] => 1 [mtfRememberLastValue] => [mtfValue] => ) [1] => switchclient\MetadataToFillClass Object ( [mtfLabel] => שם לקוח [mtfDescription] => [mtfDataType] => string [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => ) [2] => switchclient\MetadataToFillClass Object ( [mtfLabel] => מתל [mtfDescription] => [mtfDataType] => enum:ערו בן ישי ארתור קולמן חיים שמר גיא שצוב טוביה פרל לירן אזולאי אריאל ראוך [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => ) [3] => switchclient\MetadataToFillClass Object ( [mtfLabel] => מודפס [mtfDescription] => [mtfDataType] => enum:בפנים בחוץ [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => בפנים ) [4] => switchclient\MetadataToFillClass Object ( [mtfLabel] => דוגמה לאישור [mtfDescription] => [mtfDataType] => enum:לא אלקטרוני העתק שמש [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => לא ) [5] => switchclient\MetadataToFillClass Object ( [mtfLabel] => כמות [mtfDescription] => [mtfDataType] => number [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => 1 ) [6] => switchclient\MetadataToFillClass Object ( [mtfLabel] => צדדים [mtfDescription] => [mtfDataType] => enum:חד צדדי דו צדדי [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => חד צדדי ) [7] => switchclient\MetadataToFillClass Object ( [mtfLabel] => צבע [mtfDescription] => [mtfDataType] => enum:CMYK שחור/לבן פנטון בלבד [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => CMYK ) [8] => switchclient\MetadataToFillClass Object ( [mtfLabel] => כמות הפנטונים [mtfDescription] => [mtfDataType] => number [mtfDataFormat] => [mtfValueIsRequired] => [mtfRememberLastValue] => [mtfValue] => 0 ) [9] => switchclient\MetadataToFillClass Object ( [mtfLabel] => פנטון ראשון [mtfDescription] => [mtfDataType] => number [mtfDataFormat] => ^[1-9][0-9]* [mtfValueIsRequired] => 1 [mtfRememberLastValue] => [mtfValue] => 0 ) [10] => switchclient\MetadataToFillClass Object ( [mtfLabel] => פנטון שני [mtfDescription] => [mtfDataType] => number [mtfDataFormat] => ^[1-9][0-9]* [mtfValueIsRequired] => 1 [mtfRememberLastValue] => [mtfValue] => 0 ) [11] => switchclient\MetadataToFillClass Object ( [mtfLabel] => פנטון שלישי [mtfDescription] => [mtfDataType] => number [mtfDataFormat] => ^[1-9][0-9]* [mtfValueIsRequired] => 1 [mtfRememberLastValue] => [mtfValue] => 0 ) [12] => switchclient\MetadataToFillClass Object ( [mtfLabel] => פנטון רביעי [mtfDescription] => [mtfDataType] => number [mtfDataFormat] => ^[1-9][0-9]* [mtfValueIsRequired] => 1 [mtfRememberLastValue] => [mtfValue] => ) [13] => switchclient\MetadataToFillClass Object ( [mtfLabel] => נייר [mtfDescription] => [mtfDataType] => enum:נ"ע 80 גרם נ"ע 90 גרם נ"ע 100 גרם נ"ע 110 גרם נ"ע 120 גרם נ"ע... (truncated, see original email for full text)
+Created By: Enfocus Support - Natacha De Kegel (11/10/2014 2:03 PM)
+Hello, 
+
+If it is not returning a value then please send us the flow and screenshots of the problem so that we can assist further.
+Created By: Enfocus Support - Carine Bastiaen (11/10/2014 1:38 PM)
+From: <ariel@c-copy.co.il>
+
+this I knew:)
+
+There are dependencies defined of course. I will do a re-check but I am quite sure that it is not returning the values!!!
+
+
+—
+Sent from Mailbox
+
+On Mon, Nov 10, 2014 at 2:35 PM, Enfocus Maintenance Support
+Created By: Enfocus Support - Natacha De Kegel (11/10/2014 1:35 PM)
+Hello, 
+
+Sorry for the delay, here is feedback from development: 
+
+The Dependency and DependencyValue in the metadata appear when there are dependent properties defined in Submit point or Checkpoint metadata property in a flow. 
+
+See also the chapter 'Defining metadata fields' on page 322 in Switch reference documenation for more info. 
+(http://www.enfocus.com/Manuals/UserGuide/SW/12/en-us/common/sw-ori/reference/r_defining_client_fields.html)
+Created By: Ariel Rauch (11/7/2014 8:37 AM)
+Hi, 
+I understand that development is investigating the issue. I only want to stress the urgency, as I purchased the web services as a replacement for switch client (5 licenses are not enough for me). 
+
+Thank you For your understanding 
+
+Ariel
+Created By: Enfocus Support - Natacha De Kegel (11/4/2014 8:35 PM)
+Hello, 
+
+This is logged in our database (32428) to check with development. I will contact you as soon as there is feedback available.
+Attachments
+ 	 
+Action	File Name	Size	Last Modified	Created By
+Edit | View | Del	data.zip	169KB	11/17/2014 5:41 PM	Enfocus Support - Natacha De Kegel
+Edit | View | Del	DependencyCheck.sflow	6KB	11/17/2014 11:04 AM	Enfocus Support - Carine Bastiaen
+Edit | View | Del	switch_fields.png	80KB	11/12/2014 8:37 AM	Enfocus Support - Carine Bastiaen
+Always show me  Show Moremore records per related list

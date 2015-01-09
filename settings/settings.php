@@ -22,7 +22,7 @@
 //   define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/subfolder/");
 //////////////////////////////////////////////////////////////////////////////////
 
-define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/websample/");   
+define("ROOT", $_SERVER["DOCUMENT_ROOT"]."/switch/");   
 define("STARTPAGE", "index.php");
 define("SWITCHWORKSPACE", "switchworkspace.php");
 
@@ -36,7 +36,7 @@ define("SWITCHWORKSPACE", "switchworkspace.php");
 //				   - Can be left empty as Switch accepts empty passwords     	
 //////////////////////////////////////////////////////////////////////////////////
 
-define("SWITCHSERVER","localhost");
+define("SWITCHSERVER","81.218.153.16");
 define("SWITCHPORT","51008");
 define("USER","");
 define("PASS","");

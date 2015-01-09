@@ -1,0 +1,33 @@
+[11-Dec-2014 14:41:13 Europe/Berlin] PHP Warning:  simplexml_load_string() expects parameter 1 to be string, array given in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 18
+[11-Dec-2014 14:52:12 Europe/Berlin] PHP Fatal error:  Class 'GetJobsMetadataInfo' not found in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 18
+[11-Dec-2014 14:54:23 Europe/Berlin] PHP Fatal error:  Call to undefined function getJobDetailed() in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 25
+[11-Dec-2014 14:54:56 Europe/Berlin] PHP Fatal error:  Call to undefined method switchclient\UserJob::getJobDetailed() in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 25
+[11-Dec-2014 14:55:47 Europe/Berlin] PHP Fatal error:  Class 'switchclient\getJobDetailed' not found in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 25
+[11-Dec-2014 15:01:52 Europe/Berlin] PHP Warning:  simplexml_load_string() expects parameter 1 to be string, object given in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 26
+[11-Dec-2014 15:06:58 Europe/Berlin] PHP Fatal error:  Class 'GetJobsMetadataInfo' not found in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 18
+[11-Dec-2014 15:10:09 Europe/Berlin] PHP Catchable fatal error:  Argument 1 passed to switchclient\Service::GetJobsMetadataInfo() must be an instance of switchclient\GetJobsMetadataInfo, none given, called in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 18 and defined in /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php on line 2067
+[11-Dec-2014 15:10:57 Europe/Berlin] PHP Fatal error:  Class 'MetadataInfoID' not found in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 19
+[11-Dec-2014 15:11:32 Europe/Berlin] PHP Fatal error:  Call to undefined method checkpush::GetJobsMetadataInfo() in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 21
+[11-Dec-2014 15:43:20 Europe/Berlin] PHP Fatal error:  Uncaught SoapFault exception: [Client] Function ("GetJobsMetadataInfoResponse") is not a valid method for this service in /home/ccopycoi/public_html/switch/include/checkpoint.push.php:21
+Stack trace:
+#0 /home/ccopycoi/public_html/switch/include/checkpoint.push.php(21): SoapClient->__call('GetJobsMetadata...', Array)
+#1 /home/ccopycoi/public_html/switch/include/checkpoint.push.php(21): switchclient\Service->GetJobsMetadataInfoResponse(Object(switchclient\GetJobsMetadataInfoResponse))
+#2 /home/ccopycoi/public_html/switch/include/checkpoint.push.php(330): checkpush->checkpush()
+#3 {main}
+  thrown in /home/ccopycoi/public_html/switch/include/checkpoint.push.php on line 21
+[11-Dec-2014 16:38:02 Europe/Berlin] PHP Fatal error:  Uncaught SoapFault exception: [SOAP-ENV:Client] Validation constraint violation: prohibited attribute present in element <SOAP-ENV:Envelope> in /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php:1340
+Stack trace:
+#0 /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php(1340): SoapClient->__soapCall('GetFlowList', Array, Array)
+#1 /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php(1469): switchclient\Service->GetFlowList(Object(switchclient\GetFlowList))
+#2 /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php(1500): switchclient\Service->getFlowIdentifiers()
+#3 /home/ccopycoi/public_html/switch/include/alertjobslist.php(16): switchclient\Service->getAllCheckPoints()
+#4 {main}
+  thrown in /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php on line 1340
+[11-Dec-2014 16:38:05 Europe/Berlin] PHP Fatal error:  Uncaught SoapFault exception: [SOAP-ENV:Client] Validation constraint violation: prohibited attribute present in element <SOAP-ENV:Envelope> in /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php:1340
+Stack trace:
+#0 /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php(1340): SoapClient->__soapCall('GetFlowList', Array, Array)
+#1 /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php(1469): switchclient\Service->GetFlowList(Object(switchclient\GetFlowList))
+#2 /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php(1500): switchclient\Service->getFlowIdentifiers()
+#3 /home/ccopycoi/public_html/switch/include/alertjobslist.php(16): switchclient\Service->getAllCheckPoints()
+#4 {main}
+  thrown in /home/ccopycoi/public_html/switch/include/lib/SwitchClientService_v4.0.php on line 1340

@@ -59,7 +59,7 @@ foreach ($allflows as $checkpoint => $checkpval) {
 		$_SESSION['jobsFromCheckpoint']=$jobsarray;
 
 		if (SHOWCHECKPOINTNAMES == "Always") {
-			echo"<tr>";
+			echo"<tr >";
 				echo"<td class='checkpointname'>".$thischeckpoint->chName."</td>";
 				echo"<td></td>";
 			echo"</tr>";
@@ -68,9 +68,11 @@ foreach ($allflows as $checkpoint => $checkpval) {
 				echo"<tr>";
 					echo"<td class='checkpointname'>".$thischeckpoint->chName."</td>";
 					echo"<td></td>";
-				echo"</tr>";
+					
+				echo "</tr>";
 			}
 		}
+		
 		
 		//Third loop is over all jobs of the checkpoint
 		foreach ($jobsarray[$key2.$checkpoint]->jobInfos as $key3 => $value3) {
@@ -92,7 +94,7 @@ foreach ($allflows as $checkpoint => $checkpval) {
 				else {
 					echo"<tr class='oddmessage'>";
 				}
-				echo"<td class='checkpointfile' name='{$value3->jobId}'>{$name}</td>";
+				echo"<td class='checkpointfile' name='{$value3->jobId}' data-flow-id=\"". $checkpval->flowid ."\" data-checkpoint-id=\"". $thischeckpoint->chkID ."\" >{$name}</td>";
 				echo"<td class='checkpointwaittime'>{$userwaittime}";
 				echo"</tr>";
 			}

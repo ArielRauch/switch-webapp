@@ -15,7 +15,7 @@ $(document).ready(function() {
  	});
     $('.checkpointfile').click(function(event){
 		$(".refresh").html("<img src='images/ajax-loader.gif' />");
-     	$('#submit_or_checkpoint_metadata').load("include/checkpoint.push.php?sp="+$(this).attr('name'),function() {
+     	$('#submit_or_checkpoint_metadata').load("include/checkpoint.push.php?sp="+$(this).attr('name') + "&flowid=" + $(this).data('flow-id') + "&chkid=" + $(this).data('checkpoint-id') ,function() {
      		$(".refresh").html("<img src='images/refresh.png'/>");
 		});
 	});       

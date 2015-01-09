@@ -1745,6 +1745,7 @@ class Service extends \SoapClient {
         $p->jobsId = new MetadataInfoID();
         $p->jobsId->jobId = $jobId;
         $x = $this->GetJobsMetadataInfo($p); // nothing here
+        var_dump($x->jobsInfo->metadataInfo->metadataXmlStr);
         $r->jobsInfo->metadataInfo = $x;
         return $r->jobsInfo;
     }

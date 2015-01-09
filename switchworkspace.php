@@ -31,6 +31,7 @@
 <script language="javascript" src="include/scripts/workspace.js.php
 <?php if(isset($_GET['page'])){echo"?page={$_GET['page']}";}if(isset($_GET['point'])){echo"&point={$_GET['point']}";}if(isset($_GET['refresh'])){echo"&refresh={$_GET['refresh']}";} ?>"> 
 </script>
+<script type="text/javascript" src="include/scripts/xml2json.js"></script>
 <link href="css/switchworkspace.css" rel="stylesheet" type="text/css" />
 <link href="css/webservicesample.css.php" rel="stylesheet" type="text/css" />
 </head>
